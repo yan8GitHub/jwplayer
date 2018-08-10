@@ -594,8 +594,8 @@ Object.assign(Controller.prototype, {
         function _item(index, meta) {
             _stop(true);
             _setItem(index);
-            // Suppress "Uncaught (in promise) Error"
-            _play(meta).catch(noop);
+            // Use this.play() so that command is queued until after "playlistItem" event
+            _this.play(meta);
         }
 
         function _setItem(index) {
